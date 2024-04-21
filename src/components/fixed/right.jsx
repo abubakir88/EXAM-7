@@ -1,7 +1,7 @@
 import "./right.scss";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
-import { right_img } from "right-image.png";
+import rightImg from "/right_image.png";
 
 const Right = () => {
   return (
@@ -17,7 +17,7 @@ const Right = () => {
         <p>
           Let friends and followers on Spotify see what you’re listening to.
         </p>
-        <img src={right_img} alt="" />
+        <img src={rightImg} alt="" />
       </div>
     </div>
   );
