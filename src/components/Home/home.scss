@@ -1,0 +1,17 @@
+.playlist {
+  margin-left: 310px;
+  width: 1032px;
+  max-width: 100%;
+  //   background-color: red;
+  background: #121212;
+  .padding {
+    padding: 20px 40px;
+    .playlist-container {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+  }
+}

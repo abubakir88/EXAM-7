@@ -17,7 +17,16 @@ const Right = () => {
         <p>
           Let friends and followers on Spotify see what you’re listening to.
         </p>
-        <img src={rightImg} alt="" />
+        <div className="users">
+          <img src={rightImg} alt="" />
+          <img src={rightImg} alt="" />
+          <img src={rightImg} alt="" />
+        </div>
+        <h6>
+          Go to Settings Social and enable “Share my listening activity on
+          Spotify.’ You can turn this off at any time.
+        </h6>
+        <button>SETTINGS</button>
       </div>
     </div>
   );

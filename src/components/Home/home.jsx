@@ -49,13 +49,18 @@ const Home = () => {
     fetchData();
   }, []);
   return (
-    <div className="playlist-container">
-      {playlists.map((playlist) => (
-        <div key={playlist.id} className="playlist-card">
-          <img src={playlist.images[0].url} alt={playlist.name} />
-          <h3>{playlist.name}</h3>
+    <div className="playlist">
+      <div className="padding">
+        <div className="top_playlists"></div>
+        <div className="playlist-container">
+          {playlists.map((playlist) => (
+            <div key={playlist.id} className="playlist-card">
+              <img src={playlist.images[0].url} alt={playlist.name} />
+              <h3>{playlist.name}</h3>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };
