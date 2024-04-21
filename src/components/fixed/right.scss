@@ -1,0 +1,40 @@
+.right {
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  min-width: 310px;
+  .all {
+    padding: 30px 20px;
+    .top-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h3 {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 25.3px;
+        letter-spacing: 0.01em;
+        color: #ccc;
+      }
+      .top-icons {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        .AiOutlineUserAdd,
+        .IoMdClose {
+          width: 24px;
+          height: 26px;
+          color: #b3b3b3;
+          cursor: pointer;
+        }
+      }
+    }
+    p {
+      max-width: 306px;
+      font-size: 18px;
+      color: #ccc;
+    }
+  }
+}
