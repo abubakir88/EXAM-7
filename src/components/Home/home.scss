@@ -1,9 +1,59 @@
 .playlist {
   margin-left: 310px;
-  width: 1032px;
-  max-width: 100%;
+  width: 550px;
+  min-width: 100%;
   //   background-color: red;
-  background: #121212;
+  .top {
+    background: linear-gradient(180deg, #3333a3 3.13%, #121212);
+    // min-height: 400px;
+    padding: 20px 40px;
+    .arrows {
+      display: flex;
+      align-content: inherit;
+      gap: 12px;
+      .IoIosArrowBack,
+      .IoIosArrowForward {
+        width: 18px;
+        height: 20px;
+        color: #fff;
+        cursor: pointer;
+        padding: 4px;
+        background-color: #121212;
+        border-radius: 50%;
+        opacity: 0.7;
+      }
+    }
+    h2 {
+      color: #fff;
+    }
+    .top-playlists {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 12px;
+      .top_playlist-card {
+        display: flex;
+        align-items: center;
+        max-width: 380px;
+        width: 100%;
+        border-radius: 6px;
+        background-color: #3e3e83;
+        gap: 21px;
+
+        cursor: pointer;
+        img {
+          max-width: 82px;
+          max-height: 82px;
+        }
+        h3 {
+          color: #ffffff;
+          font-weight: 700;
+          letter-spacing: 0.01em;
+        }
+      }
+    }
+  }
   .padding {
     padding: 20px 40px;
     .playlist-container {
@@ -12,6 +62,17 @@
       flex-wrap: wrap;
       justify-content: space-around;
       gap: 20px;
+      cursor: pointer;
+      .playlist-card {
+        background-color: #1b1b1b;
+        max-width: 224px;
+        max-height: 324px;
+        height: 100%;
+        border-radius: 8px;
+        img {
+          max-width: 100%;
+        }
+      }
     }
   }
 }

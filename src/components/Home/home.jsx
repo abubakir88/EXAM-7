@@ -1,6 +1,8 @@
 import "./home.scss";
 // import { Data } from "../fetchData";
 import { useEffect, useState } from "react";
+import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Home = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -8,7 +10,7 @@ const Home = () => {
   const clientID = "7f7be62cd9214945946e8dc273d09a16";
   const clientSecret = "05c4aceb6ff04c5b86af198f5d6f3b04";
   const token = "https://accounts.spotify.com/api/token";
-  const url = "https://api.spotify.com/v1/browse/featured-playlists";
+  const url = "https://api.spotify.com/v1/browse/categories/toplists/playlists";
   const getToken = async () => {
     await fetch(token, {
       method: "POST",
@@ -50,13 +52,32 @@ const Home = () => {
   }, []);
   return (
     <div className="playlist">
+      <div className="top">
+        <div className="arrows">
+          <IoIosArrowBack className="IoIosArrowBack" />
+          <IoIosArrowForward className="IoIosArrowForward" />
+        </div>
+        <h2>Good afternoon</h2>
+        <div className="top-playlists">
+          {playlists.slice(0, 6).map((playlist) => (
+            <div key={playlist.id} className="top_playlist-card">
+              <img src={playlist.images[0].url} alt={playlist.name} />
+              <h3>{playlist.name}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="padding">
-        <div className="top_playlists"></div>
         <div className="playlist-container">
           {playlists.map((playlist) => (
             <div key={playlist.id} className="playlist-card">
-              <img src={playlist.images[0].url} alt={playlist.name} />
-              <h3>{playlist.name}</h3>
+              <div className="card-content">
+                <img src={playlist.images[0].url} alt={playlist.name} />
+                <h3>{playlist.name}</h3>
+              </div>
+              {/* <audio controls autoPlay muted>
+                <source src={playlist.tracks.href} />
+              </audio> */}
             </div>
           ))}
         </div>
