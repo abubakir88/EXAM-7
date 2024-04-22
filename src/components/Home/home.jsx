@@ -73,7 +73,7 @@ const Home = () => {
             <div key={playlist.id} className="playlist-card">
               <div className="card-content">
                 <img src={playlist.images[0].url} alt={playlist.name} />
-                <h3>{playlist.name}</h3>
+                <h3>{playlist.name.slice(0, 12)}</h3>
               </div>
               {/* <audio controls autoPlay muted>
                 <source src={playlist.tracks.href} />

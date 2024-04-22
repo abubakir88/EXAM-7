@@ -1,6 +1,6 @@
 .playlist {
-  // margin-left: 310px;
-  width: 550px;
+  margin-left: 310px;
+  width: 590px;
   min-width: 100%;
   //   background-color: red;
   .top {
@@ -58,14 +58,14 @@
     padding: 20px 40px;
     .playlist-container {
       display: flex;
-      align-items: center;
+      // align-items: center;
       flex-wrap: wrap;
       justify-content: space-around;
       gap: 20px;
       cursor: pointer;
       .playlist-card {
         background-color: #1b1b1b;
-        max-width: 224px;
+        max-width: 180px;
         max-height: 324px;
         height: 100%;
         border-radius: 8px;
