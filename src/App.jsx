@@ -1,3 +1,4 @@
+import "./index.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/home";
 import Like from "./components/Like/like";
@@ -9,14 +10,16 @@ import Left from "./components/fixed/left";
 const App = () => {
   return (
     <Router>
-      <Left />
-      <Right />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/like" element={<Like />} />
-        <Route path="/playlist" element={<Playlist />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <div className="body">
+        <Left />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/like" element={<Like />} />
+          <Route path="/playlist" element={<Playlist />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Right />
+      </div>
     </Router>
   );
 };

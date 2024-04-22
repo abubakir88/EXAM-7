@@ -10,7 +10,7 @@ const Home = () => {
   const clientID = "7f7be62cd9214945946e8dc273d09a16";
   const clientSecret = "05c4aceb6ff04c5b86af198f5d6f3b04";
   const token = "https://accounts.spotify.com/api/token";
-  const url = "https://api.spotify.com/v1/browse/categories/toplists/playlists";
+  const url = "https://api.spotify.com/v1/browse/featured-playlists";
   const getToken = async () => {
     await fetch(token, {
       method: "POST",
@@ -59,7 +59,7 @@ const Home = () => {
         </div>
         <h2>Good afternoon</h2>
         <div className="top-playlists">
-          {playlists.slice(0, 6).map((playlist) => (
+          {playlists.slice(14, 20).map((playlist) => (
             <div key={playlist.id} className="top_playlist-card">
               <img src={playlist.images[0].url} alt={playlist.name} />
               <h3>{playlist.name}</h3>

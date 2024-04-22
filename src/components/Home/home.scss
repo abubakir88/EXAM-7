@@ -1,5 +1,5 @@
 .playlist {
-  margin-left: 310px;
+  // margin-left: 310px;
   width: 550px;
   min-width: 100%;
   //   background-color: red;
@@ -40,7 +40,7 @@
         border-radius: 6px;
         background-color: #3e3e83;
         gap: 21px;
-
+        overflow: hidden;
         cursor: pointer;
         img {
           max-width: 82px;
@@ -69,8 +69,11 @@
         max-height: 324px;
         height: 100%;
         border-radius: 8px;
-        img {
-          max-width: 100%;
+        .card-content {
+          padding: 21px;
+          img {
+            max-width: 100%;
+          }
         }
       }
     }
