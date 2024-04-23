@@ -1,55 +1,28 @@
 import "./home.scss";
-// import { Data } from "../fetchData";
 import { useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { getPlaylists, getToken } from "../fetchData";
+import { All } from "../links";
 
 const Home = () => {
-  const [playlists, setPlaylists] = useState([]);
+  const [data, setData] = useState([]);
+  const tokenURl = "https://accounts.spotify.com/api/token";
 
-  const clientID = "7f7be62cd9214945946e8dc273d09a16";
-  const clientSecret = "05c4aceb6ff04c5b86af198f5d6f3b04";
-  const token = "https://accounts.spotify.com/api/token";
-  const url = "https://api.spotify.com/v1/browse/featured-playlists";
-  const getToken = async () => {
-    await fetch(token, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Authorization: `Basic ${btoa(clientID + ":" + clientSecret)}`,
-      },
-      body: "grant_type=client_credentials",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.setItem(
-          "asset_token",
-          JSON.stringify(`${data.token_type} ${data.access_token}`)
-        );
-      })
-      .catch((err) => console.log(err));
-  };
-  /////// 2///
-  const getPlaylists = async () => {
-    await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("asset_token")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setPlaylists(data.playlists.items);
-        console.log(data.playlists.items);
-      })
-      .catch((err) => console.log(err));
-  };
   useEffect(() => {
     const fetchData = async () => {
-      await getToken();
-      await getPlaylists();
+      try {
+        await getToken(tokenURl);
+        const playlists = await getPlaylists(All);
+        setData(playlists?.playlists.items);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
     fetchData();
   }, []);
+  console.log(data);
   return (
     <div className="playlist">
       <div className="top">
@@ -59,26 +32,74 @@ const Home = () => {
         </div>
         <h2>Good afternoon</h2>
         <div className="top-playlists">
-          {playlists.slice(14, 20).map((playlist) => (
-            <div key={playlist.id} className="top_playlist-card">
+          {data.slice(14, 20).map((playlist, index) => (
+            <Link
+              to={`/playlist/${playlist.id}?type=All`}
+              key={index}
+              className="top_playlist-card"
+            >
               <img src={playlist.images[0].url} alt={playlist.name} />
               <h3>{playlist.name}</h3>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
       <div className="padding">
+        <div className="playlists-title">
+          <h2>Your top mixes</h2>
+          <p>SEE ALL</p>
+        </div>
         <div className="playlist-container">
-          {playlists.map((playlist) => (
-            <div key={playlist.id} className="playlist-card">
+          {data.slice(5, 9).map((playlist, index) => (
+            <Link
+              to={`/playlist/${playlist.id}?type=All`}
+              key={index}
+              className="playlist-card"
+            >
               <div className="card-content">
                 <img src={playlist.images[0].url} alt={playlist.name} />
-                <h3>{playlist.name.slice(0, 12)}</h3>
+                <h4>{playlist.name}</h4>
+                <h5>{playlist.description}</h5>
               </div>
-              {/* <audio controls autoPlay muted>
-                <source src={playlist.tracks.href} />
-              </audio> */}
-            </div>
+            </Link>
+          ))}
+        </div>
+        <div className="playlists-title">
+          <h2>Made for you</h2>
+          <p>SEE ALL</p>
+        </div>
+        <div className="playlist-container">
+          {data.slice(9, 13).map((playlist, index) => (
+            <Link
+              to={`/playlist/${playlist.id}?type=All`}
+              key={index}
+              className="playlist-card"
+            >
+              <div className="card-content">
+                <img src={playlist.images[0].url} alt={playlist.name} />
+                <h4>{playlist.name.slice(0, 12)}</h4>
+                <h5>{playlist.description.slice(0, 50)}</h5>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div className="playlists-title">
+          <h2>Recently played</h2>
+          <p>SEE ALL</p>
+        </div>
+        <div className="playlist-container">
+          {data.slice(13, 17).map((playlist, index) => (
+            <Link
+              to={`/playlist/${playlist.id}?type=All`}
+              key={index}
+              className="playlist-card"
+            >
+              <div className="card-content">
+                <img src={playlist.images[0].url} alt={playlist.name} />
+                <h4>{playlist.name.slice(0, 12)}</h4>
+                <h5>{playlist.description.slice(0, 50)}</h5>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
